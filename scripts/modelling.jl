@@ -1,9 +1,13 @@
-using DifferentialEquations, Plots
-gr()
+import .CovidModelling, Plots
 
-include(srcdir("data_loading.jl"))
+uk_data = data_processing("United Kingdom")
 
-#
+filtered_uk = filter_data_by_date(uk_data, Date(2020, 3, 1), 90)
+
+plot_covid_cases(filtered_uk, "United Kingdom")
+
+using DifferentialEquations
+using Plots
 
 function seird!(du, u, p, t)
     β, σ, γ, μ = p
@@ -35,4 +39,4 @@ p = [β, σ, γ, μ]
 prob = ODEProblem(seird!, u0, tspan, p)
 sol = solve(prob, Tsit5())
 
-plot(sol, xlabel="Time (days)", ylabel="Population", label=["S" "E" "I" "R" "D"])
+plot!(sol, xlabel="Time (days)", ylabel="Population", label=["S" "E" "I" "R" "D"])
