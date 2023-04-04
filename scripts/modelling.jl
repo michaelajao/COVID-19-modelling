@@ -1,12 +1,17 @@
-using .CovidModelling
+using .CovidModelling: data_processing, filter_by_date, plot_covid_cases
+
+ng_data = data_processing("Nigeria")
+
+filtered_ng = filter_by_date(ng_data, Date(2020, 3, 1), 100)
+
+plot_covid_cases(filtered_ng, "Nigeria")
 
 
-uk_data = data_processing("United Kingdom");
+us_data = data_processing("US")
 
-filtered_uk = filter_data_by_date(uk_data, Date(2020, 3, 1), 90)
+filtered_us = filter_by_date(us_data, Date(2020, 3, 1), 100)
 
-plot_covid_cases(filtered_uk, "United Kingdom")
-
+plot_covid_cases(filtered_us, "United State")
 using DifferentialEquations
 using Plots
 
@@ -40,4 +45,4 @@ p = [β, σ, γ, μ]
 prob = ODEProblem(seird!, u0, tspan, p)
 sol = solve(prob, Tsit5())
 
-plot!(sol, xlabel="Time (days)", ylabel="Population", label=["S" "E" "I" "R" "D"])
+plot(sol, xlabel="Time (days)", ylabel="Population", label=["S" "E" "I" "R" "D"])
