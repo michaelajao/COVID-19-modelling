@@ -4,6 +4,12 @@ using DrWatson
 # Here you may include files from the source directory
 include(srcdir("dummy_src_file.jl"))
 
+include(srcdir("data_loading.jl"))
+
+data = data_processing("Nigeria")
+
+filter_data_by_date(data, Date(2021, 3, 1), 30)
+
 println(
 """
 Currently active project is: $(projectname())
