@@ -1,6 +1,7 @@
-import .CovidModelling, Plots
+using .CovidModelling
 
-uk_data = data_processing("United Kingdom")
+
+uk_data = data_processing("United Kingdom");
 
 filtered_uk = filter_data_by_date(uk_data, Date(2020, 3, 1), 90)
 
