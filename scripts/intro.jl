@@ -51,3 +51,16 @@ end
 savename(params)
 savename(dicts[1], "jld2")
 readdir(datadir("simulations"))
+
+for (i, d) in enumerate(dicts)
+    f = makesim(d)
+    @tagsave(datadir("simulations", savename(d, "jld2")), f)
+end
+
+firstsim = readdir(datadir("simulations"))[1]
+
+wload(datadir("simulations", firstsim))
+
+using DataFrames
+
+df = collect_results(datadir("simulations"))
