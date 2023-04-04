@@ -17,3 +17,37 @@ issues on GitHub, submitting feature requests,
 or even opening your own Pull Requests!
 """
 )
+
+a, b = 2, 3
+v = rand(5)
+method = "linear"
+r, y = fakesim(a, b, v, method)
+
+params = @strdict a b v method
+
+allparams = Dict(
+    "a" => [1, 2], # it is inside vector. It is expanded.
+    "b" => [3, 4],
+    "v" => [rand(5)],     # single element inside vector; no expansion
+    "method" => "linear", # not in vector = not expanded, even if naturally iterable
+)
+
+dicts = dict_list(allparams)
+
+function makesim(d::Dict)
+    @unpack a, b, v, method = d
+    r, y = fakesim(a, b, v, method)
+    fulld = copy(d)
+    fulld["r"] = r
+    fulld["y"] = y
+    return fulld
+end
+
+for (i, d) in enumerate(dicts)
+    f = makesim(d)
+    wsave(datadir("simulations", "sim_$(i).jld2"), f)
+end
+
+savename(params)
+savename(dicts[1], "jld2")
+readdir(datadir("simulations"))
