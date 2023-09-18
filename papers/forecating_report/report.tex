@@ -22,7 +22,7 @@
 \begin{document}
 
 % Paper title
-\title{Hsopitalisation modelling: A UK Case Study}
+\title{Forecasting Hospitalization Demand in England during the COVID-19 Pandemic: A Mathematical Modeling Approach}
 \author{Michael Ajao-olarinoye}
 
 \maketitle
@@ -38,13 +38,12 @@
 \end{IEEEkeywords}
 
 \section{Introduction}
-\IEEEPARstart{T}{his} introduce your topic and the purpose of your paper.
-\section{Problem Statement}
+\IEEEPARstart{T}{his} paper delves into the mathematical modeling of infectious diseases, specifically focusing on the COVID-19 pandemic. The primary objective is to understand the dynamics of COVID-19 transmission and to forecast the demand for mechanical ventilators in England, a critical healthcare resource during the peaks of the pandemic.
 
+\section{Problem Statement}
 The outbreak of the COVID-19 pandemic has posed significant challenges to healthcare systems worldwide. One of the major concerns during the pandemic's peaks has been the potential overwhelming demand on healthcare resources, particularly the demand for intensive care units (ICUs) and mechanical ventilators. This study aims to develop a mathematical model to understand the dynamics of COVID-19 transmission and forecast the demand for mechanical ventilators in England.
 
 \section{Model Assumptions}
-
 \begin{enumerate}
     \item The population is constant, i.e., no births or non-COVID-related deaths are considered.
     \item The disease transmission occurs only between the susceptible and the infected (both asymptomatic and symptomatic) individuals.
@@ -55,9 +54,7 @@ The outbreak of the COVID-19 pandemic has posed significant challenges to health
 \end{enumerate}
 
 \section{Model Definition}
-
 \subsection{Compartments}
-
 \begin{itemize}
     \item \( S(t) \): Susceptible individuals at time \( t \).
     \item \( E(t) \): Exposed individuals at time \( t \).
@@ -69,7 +66,6 @@ The outbreak of the COVID-19 pandemic has posed significant challenges to health
 \end{itemize}
 
 \subsection{Differential Equations}
-
 \begin{align*}
 \frac{dS}{dt} & = -\beta S (I_a + I_s) + \omega R \\
 \frac{dE}{dt} & = \beta S (I_a + I_s) - \sigma E \\
@@ -81,7 +77,6 @@ The outbreak of the COVID-19 pandemic has posed significant challenges to health
 \end{align*}
 
 \subsection{Parameters}
-
 \begin{itemize}
     \item \( \beta \): Transmission rate.
     \item \( \sigma \): Rate of progression from exposed to infected.
@@ -96,20 +91,27 @@ The outbreak of the COVID-19 pandemic has posed significant challenges to health
 \end{itemize}
 
 \section{Mathematical Proof of the Model}
+The model is a system of ordinary differential equations (ODEs) derived from the law of mass action. The sum of all compartments at any time \( t \) is equal to the constant population \( N \), ensuring the conservation of mass:
 
-The above model is a system of ordinary differential equations (ODEs) derived from the law of mass action. The sum of all compartments at any time \( t \) is equal to the constant population \( N \), which ensures the conservation of mass:
+\[ S(t) + E(t) + I_a(t) + I_s(t) + V(t) + R(t) + D(t) = N \]
 
-\[
-S(t) + E(t) + I_a(t) + I_s(t) + V(t) + R(t) + D(t) = N
-\]
+The non-negativity of the solutions is ensured by the non-negative initial conditions and the structure of the ODEs, which prevents negative values in any compartment.
 
-The non-negativity of the solutions is ensured by the non-negative initial conditions and the fact that the right-hand side of the ODEs does not allow for negative values in any compartment. 
+\section{Reproduction Numbers for the Epidemic Model}
+In this section, we derive the basic reproduction number \( R_0 \) and the effective reproduction number \( R_t \) using the Next-Generation Matrix (NGM) method.
 
-Furthermore, the model's structure ensures that individuals flow through the compartments in a manner consistent with the natural progression of the disease, from exposure to possible death or recovery. The flow is regulated by the parameters, which are all non-negative, ensuring that the transitions between compartments are biologically meaningful.
+\subsection{Basic Reproduction Number \( R_0 \)}
+The basic reproduction number, \( R_0 \), represents the average number of secondary infections produced by a single infected individual in a completely susceptible population. Using the NGM method, \( R_0 \) is derived as:
+
+\[ R_0 = \frac{\beta N ( \rho - \sigma + p \sigma + \gamma_s )}{p \sigma ( \rho + \gamma_s )} \]
+
+\subsection{Effective Reproduction Number \( R_t \)}
+The effective reproduction number, \( R_t \), represents the average number of secondary infections produced by one infected individual at time \( t \) in a population that is not entirely susceptible. It is formulated as:
+
+\[ R_t = \frac{\beta S(t) ( \rho - \sigma + p \sigma + \gamma_s )}{p \sigma ( \rho + \gamma_s )} \]
 
 \section{Real-World Application}
-
-This model serves as a tool for understanding and predicting the demand for critical healthcare resources, specifically mechanical ventilators, in England during the COVID-19 pandemic. By calibrating the model to real-world data, healthcare planners and policymakers can make informed decisions about resource allocation, anticipate periods of high demand, and implement interventions to manage and mitigate the strain on the healthcare system.
+This model serves as a tool for understanding and predicting the demand for critical healthcare resources
 
 
 \begin{figure}[h]
