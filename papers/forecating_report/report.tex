@@ -114,18 +114,18 @@ This model serves as a tool for understanding and predicting the demand for crit
 
 \begin{figure}[h]
     \centering
-    \begin{tikzpicture}[node distance=3cm, auto, thick]
+    \begin{tikzpicture}[node distance=2.0cm, thick]
         % Define block styles
-        \tikzstyle{roundnode} = [circle, draw=green!60, fill=green!5, very thick, minimum size=7mm, text centered]
-        \tikzstyle{squarednode} = [rectangle, draw=red!60, fill=red!5, very thick, text width=2cm, text centered, rounded corners, minimum height=1.5cm]
-        \tikzstyle{line} = [draw, -{Latex[scale=2]}]
+        \tikzstyle{roundnode} = [circle, draw=green!60, fill=green!5, very thick, minimum size=1cm, text centered]
+        \tikzstyle{squarednode} = [rectangle, draw=red!60, fill=red!5, very thick, text width=2.5cm, text centered, rounded corners, minimum height=1.5cm]
+        \tikzstyle{line} = [draw, -{Latex[scale=1.5]}]
     
         % Define nodes
         \node [squarednode] (S) {S(t)};
         \node [squarednode, right=of S] (E) {E(t)};
         \node [roundnode, above right=of E] (Ia) {I\_a(t)};
         \node [roundnode, below right=of E] (Is) {I\_s(t)};
-        \node [roundnode, right=of Is] (V) {V(t)};
+        \node [squarednode, right=of Is] (V) {V(t)};
         \node [squarednode, above right=of V] (R) {R(t)};
         \node [roundnode, below right=of V] (D) {D(t)};
         
@@ -138,10 +138,10 @@ This model serves as a tool for understanding and predicting the demand for crit
         \draw[line] (Is) -- node[midway, sloped, below] { \( \gamma_s I_s \) } (R);
         \draw[line] (V) -- node[midway, sloped, above] { \( (1-\delta) \alpha V \) } (R);
         \draw[line] (V) -- node[midway, sloped, below] { \( \delta \alpha V + \nu V \) } (D);
-        \draw[line] (R.north) -- ++(0,1.5cm) -| node[pos=0.25, above] { \( \omega R \) } (S.north);
+        \draw[line, dotted] (R.north) -- ++(0,2.5cm) -| node[pos=0.25, above] { \( \omega R \) } (S.north);
         
     \end{tikzpicture}
-    \caption{Compartmental flow of the refined SEIASVHRD model.}
+    \caption{Compartmental flow of the COVID-19 Transmission Dynamics Model.}
 \end{figure}
 
 \end{document}
