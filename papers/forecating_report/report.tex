@@ -90,37 +90,13 @@ The outbreak of the COVID-19 pandemic has posed significant challenges to health
     \item \( p \): Proportion of exposed individuals who become asymptomatic infected.
 \end{itemize}
 
-\section{Mathematical Proof of the Model}
-The model is a system of ordinary differential equations (ODEs) derived from the law of mass action. The sum of all compartments at any time \( t \) is equal to the constant population \( N \), ensuring the conservation of mass:
-
-\[ S(t) + E(t) + I_a(t) + I_s(t) + V(t) + R(t) + D(t) = N \]
-
-The non-negativity of the solutions is ensured by the non-negative initial conditions and the structure of the ODEs, which prevents negative values in any compartment.
-
-\section{Reproduction Numbers for the Epidemic Model}
-In this section, we derive the basic reproduction number \( R_0 \) and the effective reproduction number \( R_t \) using the Next-Generation Matrix (NGM) method.
-
-\subsection{Basic Reproduction Number \( R_0 \)}
-The basic reproduction number, \( R_0 \), represents the average number of secondary infections produced by a single infected individual in a completely susceptible population. Using the NGM method, \( R_0 \) is derived as:
-
-\[ R_0 = \frac{\beta N ( \rho - \sigma + p \sigma + \gamma_s )}{p \sigma ( \rho + \gamma_s )} \]
-
-\subsection{Effective Reproduction Number \( R_t \)}
-The effective reproduction number, \( R_t \), represents the average number of secondary infections produced by one infected individual at time \( t \) in a population that is not entirely susceptible. It is formulated as:
-
-\[ R_t = \frac{\beta S(t) ( \rho - \sigma + p \sigma + \gamma_s )}{p \sigma ( \rho + \gamma_s )} \]
-
-\section{Real-World Application}
-This model serves as a tool for understanding and predicting the demand for critical healthcare resources
-
-
 \begin{figure}[h]
     \centering
     \begin{tikzpicture}[node distance=2.0cm, thick]
         % Define block styles
         \tikzstyle{roundnode} = [circle, draw=green!60, fill=green!5, very thick, minimum size=1cm, text centered]
         \tikzstyle{squarednode} = [rectangle, draw=red!60, fill=red!5, very thick, text width=2.5cm, text centered, rounded corners, minimum height=1.5cm]
-        \tikzstyle{line} = [draw, -{Latex[scale=1.5]}]
+        \tikzstyle{line} = [draw, -{Latex[scale=0.5]}]
     
         % Define nodes
         \node [squarednode] (S) {S(t)};
@@ -145,5 +121,31 @@ This model serves as a tool for understanding and predicting the demand for crit
     \end{tikzpicture}
     \caption{Compartmental flow of the COVID-19 Transmission Dynamics Model.}
 \end{figure}
+
+\section{Mathematical Proof of the Model}
+The model is a system of ordinary differential equations (ODEs) derived from the law of mass action. The sum of all compartments at any time \( t \) is equal to the constant population \( N \), ensuring the conservation of mass:
+
+\[ S(t) + E(t) + I_a(t) + I_s(t) + V(t) + R(t) + D(t) = N \]
+
+The non-negativity of the solutions is ensured by the non-negative initial conditions and the structure of the ODEs, which prevents negative values in any compartment.
+
+\section{Reproduction Numbers for the Epidemic Model}
+In this section, we derive the basic reproduction number \( R_0 \) and the effective reproduction number \( R_t \) using the Next-Generation Matrix (NGM) method.
+
+\subsection{Basic Reproduction Number \( R_0 \)}
+The basic reproduction number, \( R_0 \), represents the average number of secondary infections produced by a single infected individual in a completely susceptible population. Using the NGM method, \( R_0 \) is derived as:
+
+\[ R_0 = \frac{\beta N ( \rho - \sigma + p \sigma + \gamma_s )}{p \sigma ( \rho + \gamma_s )} \]
+
+\subsection{Effective Reproduction Number \( R_t \)}
+The effective reproduction number, \( R_t \), represents the average number of secondary infections produced by one infected individual at time \( t \) in a population that is not entirely susceptible. It is formulated as:
+
+\[ R_t = \frac{\beta S(t) ( \rho - \sigma + p \sigma + \gamma_s )}{p \sigma ( \rho + \gamma_s )} \]
+
+\section{Real-World Application}
+This model serves as a tool for understanding and predicting the demand for critical healthcare resources
+
+
+
 
 \end{document}
