@@ -45,10 +45,13 @@ if "India" in names(y)
     y[!, :India][141] = 286131 # correction for number of cases reported on 10-06-2020
 end
 
+y = y[1:150, :]
+
 rows, cols = size(y)
 
+# Create a plot
 gr(size=(900, 600))
-@df y plot(x, cols(1:cols),
+@df y plot(x[1:150], cols(1:cols),
     label=reshape(names(y), (1, length(names(y)))),
     xlabel="Time",
     ylabel="Total number of reported cases",
